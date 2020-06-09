@@ -49,6 +49,10 @@ interval(1000)
      * emision hasta que no se complete
      * el observable, o sea el complete
      * 
+     * con el pipe take anterior generamos
+     * ese complete tomando 4 valores
+     * ahi aplicamos el reduce
+     * 
      * parametro inicial funcion
      * parametro secundario valor inicial
      */
