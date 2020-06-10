@@ -2,7 +2,7 @@ import { of } from 'rxjs';
 import { ajax, AjaxError } from 'rxjs/ajax';
 import { catchError } from 'rxjs/operators';
 
-
+// const url = 'https://httpbin.org/delay/1'
 const url = 'https://httpbinXX.org/delay/1'
 
 const handleError = ( resp: AjaxError ) => {
