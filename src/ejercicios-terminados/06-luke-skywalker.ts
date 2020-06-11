@@ -1,5 +1,5 @@
 import { ajax } from 'rxjs/ajax';
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap, map, pluck } from 'rxjs/operators';
 import { zip, of } from 'rxjs';
 
 /**
@@ -46,13 +46,44 @@ import { zip, of } from 'rxjs';
     const getRequest = ( url: string ) => ajax.getJSON<any>(url);
     // ==================================================================
 
+    /********** LO HICE YO ***********************************************************/
+    // const personajes$ = getRequest(`${SW_API}/people/2/`)
+    // const speciesURL$  = getRequest(`${SW_API}/people/2/`).pipe( pluck('species', 0) )
+
+
+    // zip(personajes$).pipe(
+
+    //     map(([personaje]) => ({ 
+    //         personaje, 
+    //         species:  getRequest( personaje.species[0] ).subscribe( {next: val => val} ), 
+    //     })),
+        
+    //   )
+    //   .subscribe(x => console.log(x));
+    
+       
+    // outputs
+    // { age: 27, name: 'Foo', isDev: true }
+    // { age: 25, name: 'Bar', isDev: true }
+    // { age: 29, name: 'Beer', isDev: false }
+    /************************************************************************************* */
+
     // Realizar el llamado al URL para obtener a Luke Skywalker
-    getRequest(`Aquí va un URL`).pipe(
+    getRequest(`${SW_API}/people/2/`).pipe(
         // Realizar los operadores respectivos aquí
         
-
-
+        // FERNANDO 
         
+        // Primera Respuesta
+        // switchMap( resp => getRequest(`${resp.species[0]}`) )
+
+        switchMap( resp => 
+            
+            zip( of(resp),  getRequest(`${resp.species[0]}`) ).pipe(
+                
+                map( ( [personaje, especies] ) => ({personaje, especies})  )
+            )
+        )
 
     // NO TOCAR el subscribe ni modificarlo ==
     ).subscribe( console.log )           // ==
