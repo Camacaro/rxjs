@@ -1,0 +1,8 @@
+Pagina para hacer perticiones 
+const url = 'https://httpbin.org/delay/1'
+Ejemplo de ello en la carpeta ajax
+
+
+
+Para crear interfaces teniendo la respuesta 
+puedo usar esta pagina interfaces https://app.quicktype.io/
