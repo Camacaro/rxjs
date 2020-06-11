@@ -1,4 +1,5 @@
 import { from } from 'rxjs';
+import { reduce, map, filter } from 'rxjs/operators';
 
 /**
  * Ejercicio: 
@@ -16,9 +17,27 @@ import { from } from 'rxjs';
 
   const datos = [1, 2, 'foo', 3, 5, 6, 'bar', 7, 8];
 
-  from(datos).pipe(
-    // Trabajar aquí
+    const totalReducer = ( acumulador: number, valorActual: any  ) => {
+        return acumulador + valorActual;
+    }
 
+    const validNumber = (dato: any): number => {
+        if( !isNaN(dato)  ) {
+            return dato;
+        } else {
+            return 0
+        }
+    }
+
+  from(datos).pipe(
+
+    // YO
+    //map( validNumber ),
+
+    // Fernando
+    filter <any> ( val => !isNaN(val) ),
+
+    reduce( totalReducer )
 
   ).subscribe( console.log ) // La salida debe de ser 32
 
