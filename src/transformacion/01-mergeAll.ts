@@ -80,6 +80,8 @@ input$.pipe(
 
     /**
      * Con esto hacemos todas las subscripciones pendiente
+     * 
+     * El complete se emite cuando todos los observables sean completado
      */
     mergeAll <GithubUsersResp> (),
 
