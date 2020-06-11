@@ -6,3 +6,7 @@ Ejemplo de ello en la carpeta ajax
 
 Para crear interfaces teniendo la respuesta 
 puedo usar esta pagina interfaces https://app.quicktype.io/
+
+
+Api para hacer peticiones de Ejemplo
+https://reqres.in/
