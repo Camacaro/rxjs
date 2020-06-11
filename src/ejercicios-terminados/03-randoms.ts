@@ -1,4 +1,4 @@
-import { interval } from 'rxjs';
+import { interval, Subject } from 'rxjs';
 import { take, map } from 'rxjs/operators';
 /**
  * Ejercicio: Realizar que los dos observables finales, 
@@ -17,12 +17,22 @@ import { take, map } from 'rxjs/operators';
   // No tocar la creación del observable
   // ============================================
 
-    
+
+  /**
+   * El subject se subscribe al reloj
+   * ahora todo subject subscrito emitira el mismo valor
+   */
+  const subject$ = new Subject()
+
+  reloj$.subscribe( subject$ )
+
+  subject$.subscribe( val => console.log('obs1', val) );
+  subject$.subscribe( val => console.log('obs2', val) );
   
   
   // Estos dos observables deben de emitir exactamente los mismos valores
-  reloj$.subscribe( val => console.log('obs1', val) );
-  reloj$.subscribe( val => console.log('obs2', val) );
+//   reloj$.subscribe( val => console.log('obs1', val) );
+//   reloj$.subscribe( val => console.log('obs2', val) );
 
 
 
