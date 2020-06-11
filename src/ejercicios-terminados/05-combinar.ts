@@ -1,5 +1,5 @@
-import { interval, timer } from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { interval, timer, combineLatest } from 'rxjs';
+import { map, take, tap } from 'rxjs/operators';
 /**
  * Ejercicio: Combinar ambos observables (letras$, numeros$)
  * para que las emisiones sean la concatenación de los últimos
@@ -42,7 +42,18 @@ import { map, take } from 'rxjs/operators';
     // Es decir, la salida en el subscribe debe 
     // de estar procesada en su totalidad
     // ========================================
+    
+    combineLatest(
+        letras$,
+        numeros$
+    ).pipe(
+        // YO
+        // map( arr => `${arr[0]}${arr[1]}` ),
 
+        // Fernando 
+        map( ([a,b]) => a+b)
+
+    ).subscribe( console.log )
 
 
 
